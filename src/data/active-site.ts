@@ -1,8 +1,3 @@
-/**
- * ACTIVE BUILD SELECTOR
- *
- * The master always points at ./site. A prospect branch changes only this import
- * to ./prospects/<slug>; components never need to be rewritten.
- */
-export { siteData } from "./site";
+/** Active build: prospect preview 'kobenhavns-trafikskole'. */
+export { siteData } from "./prospects/kobenhavns-trafikskole";
 export type { Course } from "./site";
