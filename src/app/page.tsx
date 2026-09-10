@@ -3,6 +3,7 @@ import { Faq } from "@/components/Faq";
 import { Header } from "@/components/Header";
 import { Arrow, Check, Phone } from "@/components/icons";
 import { SignupForm } from "@/components/SignupForm";
+import { Footer } from "@/components/Footer";
 import { siteData } from "@/data/active-site";
 
 export default function Home() {
@@ -15,8 +16,8 @@ export default function Home() {
             <p className="eyebrow"><span />{siteData.hero.eyebrow}</p>
             <h1>{siteData.hero.title.split("\n").map((line, i) => <span key={line}>{line}{i === 0 && <br />}</span>)}</h1>
             <p className="hero-text">{siteData.hero.text}</p>
-            <div className="hero-actions"><a className="button" href="#kontakt">{siteData.hero.primaryCta} <Arrow /></a><a className="button-link" href="#priser">{siteData.hero.secondaryCta}</a></div>
-            <div className="hero-trust"><span className="stars" aria-label={`${siteData.hero.ratingLabel} stjerner`}>★★★★★</span><span><strong>{siteData.hero.ratingLabel}</strong> · {siteData.hero.ratingText}</span></div>
+            <div className="hero-actions"><a className="button" href="/kontakt#formular">{siteData.hero.primaryCta} <Arrow /></a><a className="button-link" href="/priser">{siteData.hero.secondaryCta}</a></div>
+            <div className="hero-trust"><span><strong>{siteData.hero.ratingLabel}</strong> · {siteData.hero.ratingText}</span></div>
           </div>
           <div className={`hero-visual ${siteData.images.hero.src ? "has-photo" : ""}`} role={siteData.images.hero.src ? undefined : "img"} aria-label={siteData.images.hero.src ? undefined : siteData.images.hero.alt}>
             {siteData.images.hero.src ? (
@@ -37,16 +38,16 @@ export default function Home() {
           <div className="course-date"><strong>{course.day}</strong><span>{course.month}</span></div>
           <div className="course-place"><small>Holdstart</small><h3>{course.location}</h3></div>
           <div className="course-meta"><span>{course.time}</span><span className="availability"><i />{course.spots} {!siteData.preview.verified.courses && <em>· preview</em>}</span></div>
-          <a href={`#kontakt`} className="round-link" aria-label={`Vælg hold i ${course.location} den ${course.day}. ${course.month}`}><Arrow /></a>
+          <a href="/holdstart" className="round-link" aria-label="Læs om næste holdstart"><Arrow /></a>
         </article>)}</div>
-        {!siteData.preview.verified.courses && <p className="demo-note">Datoer og pladsstatus er ubekræftede preview-oplysninger.</p>}
+        {!siteData.preview.verified.courses && <p className="demo-note">Ingen historiske datoer vises som aktuelle. <a href="/holdstart">Læs om holdstart</a>.</p>}
       </div></section>
 
       <section className="section pricing" id="priser"><div className="shell pricing-grid">
-        <div className="pricing-intro"><p className="eyebrow light">{siteData.sections.pricing.eyebrow}</p><h2>{siteData.sections.pricing.title}<br /><em>{siteData.sections.pricing.emphasis}</em></h2><p>{siteData.package.intro}</p><a href="#kontakt" className="text-link light-link">Spørg os om pakken <Arrow /></a></div>
+        <div className="pricing-intro"><p className="eyebrow light">{siteData.sections.pricing.eyebrow}</p><h2>{siteData.sections.pricing.title}<br /><em>{siteData.sections.pricing.emphasis}</em></h2><p>{siteData.package.intro}</p><a href="/priser" className="text-link light-link">Sammenlign priser <Arrow /></a></div>
         <article className="price-card"><div className="price-card-top"><div><span>{siteData.sections.pricing.badge}</span><h3>{siteData.package.name}</h3></div><div className="price"><small>Fra</small><strong>{siteData.package.price}</strong></div></div>
           <ul>{siteData.package.items.map(item => <li key={item}><span><Check /></span>{item}</li>)}</ul>
-          <a href="#kontakt" className="button button-sun">Vælg lovpakken <Arrow /></a><p>{siteData.package.disclaimer}</p>
+          <a href="/priser" className="button button-sun">Se hele prisoverblikket <Arrow /></a><p>{siteData.package.disclaimer}</p>
         </article>
       </div></section>
 
@@ -68,7 +69,7 @@ export default function Home() {
 
       <section className="section contact" id="kontakt"><div className="shell contact-grid"><div className="contact-copy"><p className="eyebrow light">{siteData.sections.contact.eyebrow}</p><h2>{siteData.sections.contact.title}<br /><em>{siteData.sections.contact.emphasis}</em></h2><p>{siteData.sections.contact.text}</p><div className="contact-details"><a href={`tel:${siteData.business.phoneHref}`}><Phone /> <span><small>Ring direkte</small><strong>{siteData.business.phone}</strong></span></a><a href={`mailto:${siteData.business.email}`}><span className="at">@</span><span><small>Skriv til os</small><strong>{siteData.business.email}</strong></span></a></div></div><div className="form-wrap"><SignupForm /></div></div></section>
     </main>
-    <footer><div className="shell footer-main"><div><a className="wordmark footer-logo" href="#top">{siteData.brand.logoSrc ? <Image className="brand-logo" src={siteData.brand.logoSrc} alt={siteData.brand.logoAlt} width={180} height={52} /> : <><span className="wordmark-mark">{siteData.brand.logoMark}</span><span>{siteData.business.shortName}</span><small>{siteData.brand.logoDescriptor}</small></>}</a><p>{siteData.business.tagline}<br />{siteData.footer.supportingLine}</p></div><div><h3>Find vej</h3><p>{siteData.business.address}<br />{siteData.business.serviceAreas}</p>{siteData.business.mapUrl && <a href={siteData.business.mapUrl}>Se på kort</a>}</div><div><h3>Kontakt</h3><a href={`tel:${siteData.business.phoneHref}`}>{siteData.business.phone}</a><a href={`mailto:${siteData.business.email}`}>{siteData.business.email}</a><p>{siteData.business.openingHours.join(" · ")}</p></div>{siteData.socialLinks.some(link => link.href) && <div><h3>Følg med</h3>{siteData.socialLinks.filter(link => link.href).map(link => <a href={link.href!} key={link.label}>{link.label}</a>)}</div>}</div><div className="shell footer-bottom"><span>© {new Date().getFullYear()} {siteData.business.name} · {siteData.preview.label}</span><div><a href={siteData.footer.privacyHref}>Demo-privatliv</a><a href={siteData.footer.termsHref}>Demo-vilkår</a><span>{siteData.business.cvr}{!siteData.preview.verified.legal && " · Ikke verificeret"}</span></div></div></footer>
-    <a href="#kontakt" className="mobile-sticky">{siteData.hero.primaryCta} <Arrow /></a>
+    <Footer />
+    <a href="/kontakt#formular" className="mobile-sticky">{siteData.hero.primaryCta} <Arrow /></a>
   </>;
 }

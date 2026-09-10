@@ -50,6 +50,14 @@ export const siteData = {
     ratingLabel: "Personlig undervisning",
     ratingText: "Mulighed for dansk og engelsk kontakt",
   },
+  navigation: [
+    { label: "Forside", href: "/" },
+    { label: "Kørekort", href: "/koerekort" },
+    { label: "Priser", href: "/priser" },
+    { label: "Holdstart", href: "/holdstart" },
+    { label: "Om os", href: "/om-os" },
+    { label: "Kontakt", href: "/kontakt" },
+  ],
   images: {
     hero: { src: null as string | null, alt: "Illustreret preview af skolebil i København", position: "center" },
     instructor: { src: null as string | null, alt: "Neutral previewplads til godkendt billede af kørelærer", position: "center" },
@@ -69,8 +77,7 @@ export const siteData = {
     { value: "Fleksibelt", label: "Personlig undervisning tilbydes" },
   ],
   courses: [
-    { id: "next-weekday", day: "—", month: "NYT HOLD", location: "Valby", time: "Dato bekræftes af skolen", spots: "Spørg om næste start" },
-    { id: "next-weekend", day: "—", month: "WEEKEND", location: "Valby", time: "Dato bekræftes af skolen", spots: "Weekendhold har pristillæg" },
+    { id: "next-course", day: "—", month: "NÆSTE HOLD", location: "Valby", time: "Dato og tid bekræftes af skolen", spots: "Kontakt skolen" },
   ],
   package: {
     name: "Pay as U go · Kat. B",
@@ -78,6 +85,55 @@ export const siteData = {
     intro: "Start med den publicerede Kat. B-pakke, og tilkøb kørslen på vej separat.",
     items: ["Ubegrænset teoriundervisning", "Manøvrebane", "Køreteknisk anlæg", "3 måneders online teori"],
     disclaimer: "Tilbudspris offentliggjort pr. 1. januar 2026. Kørsel på vej, prøve og øvrige gebyrer er ikke inkluderet i den viste pris.",
+  },
+  pricing: {
+    categoryB: [
+      {
+        name: "Pay as U go",
+        price: "4.495 kr.",
+        label: "Kom i gang",
+        description: "Til dig, der vil betale den praktiske kørsel løbende.",
+        included: ["Ubegrænset teori", "Manøvrebane", "Køreteknisk anlæg", "3 måneders online teori"],
+        excluded: ["Kørsel på vej", "Praktisk prøve", "Færdselsstyrelsens gebyr", "Førstehjælp og øvrige tilkøb"],
+      },
+      {
+        name: "Lovpakke · Kat. B",
+        price: "13.470 kr.",
+        label: "Samlet løsning",
+        description: "Den særskilt offentliggjorte lovpakke til kategori B. Bed skolen bekræfte det præcise indhold før bestilling.",
+        included: ["Publiceret som lovpakke til kategori B", "Mulighed for opdeling af betaling"],
+        excluded: ["Pakkens fulde indhold fremgår ikke entydigt af prisoversigten", "Eksterne gebyrer og tilkøb skal bekræftes"],
+      },
+    ],
+    roadCard: { name: "Klippekort til lovpligtig kørsel", price: "9.300 kr.", note: "17,33 lektioner. Publiceret som tilkøb til Pay as U go." },
+    extras: [
+      { name: "Generhverv · pakke", price: "4.295 kr.", note: "Tilbudspris" },
+      { name: "Særlig køreundervisning · Pay as U go", price: "1.995 kr.", note: "Teori og 3 måneders online teori; kørsel afregnes separat" },
+      { name: "Førstehjælp", price: "895 kr.", note: "Inkl. mad og drikke" },
+      { name: "Parkeringskursus", price: "1.500 kr.", note: "2 timer og 15 minutter" },
+      { name: "Lovpakke · Kat. A", price: "9.900 kr.", note: "Tilbudspris" },
+      { name: "Lovpakke · Kat. C", price: "18.000 kr.", note: "Publiceret pris" },
+      { name: "Lovpakke · Kat. C/E", price: "19.000 kr.", note: "Publiceret pris" },
+    ],
+    conflicts: "Den offentlige prisside gentager flere poster med modstridende beløb, blandt andet praktisk prøve, myndighedsgebyrer, rekonstruktion og MC-total. De vises derfor ikke som faste priser her.",
+  },
+  services: [
+    { title: "Kategori B · manuelt gear", text: "Til dig, der vil lære og gå til prøve i en bil med manuelt gear.", detail: "Kategori B" },
+    { title: "Kategori B · automatgear", text: "Et forløb med automatgear, offentliggjort af skolen som kode 78.", detail: "Kode 78" },
+    { title: "Kombikort", text: "Skolens kombinationsmulighed mellem manuel og automatisk undervisning.", detail: "Kode 148" },
+    { title: "Generhverv", text: "For dig, der skal generhverve førerretten og vil have teori og praktisk træning samlet.", detail: "Pakke offentliggjort" },
+    { title: "Særlig køreundervisning", text: "Et individuelt tilrettelagt tilbud til elever med særlige undervisningsbehov.", detail: "Personligt forløb" },
+    { title: "Flere tilbud", text: "Skolen offentliggør også motorcykel, kategori C og C/E, rutinetimer, parkering, førstehjælp og kørelæreruddannelse.", detail: "Kontakt for afklaring" },
+  ],
+  instructors: [
+    { name: "Rune Larsen", role: "Særligt uddannet kørelærer", details: "Kategori B, køreteknisk instruktør og førstehjælpsinstruktør. Kan kontaktes på engelsk." },
+    { name: "Silas Persson", role: "Kørelærer", details: "Offentligt præsenteret som kørelærer til kategori B." },
+    { name: "Jimmi Thøger", role: "Kørelærer", details: "Kategori B, køreteknisk instruktør og voksenpædagogisk kursus." },
+  ],
+  about: {
+    lead: "Undervisning skal passe til mennesket bag rattet.",
+    text: "Københavns Trafikskole beskriver et læringsmiljø med plads til fejl og undervisning, der tilpasses den enkelte elev. Skolen fremhæver erfaring med elever, som blandt andet har ADHD, autisme eller angst.",
+    note: "Det er skolens egen beskrivelse af erfaring og tilgang — ikke et løfte om et bestemt resultat eller en sundhedsfaglig ydelse.",
   },
   instructor: {
     name: "Rune Larsen",
